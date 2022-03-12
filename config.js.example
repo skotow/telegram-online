@@ -1,0 +1,16 @@
+
+
+const config =  {
+
+     apiId : XXXX, //id you can find  by url https://my.telegram.org/apps
+     apiHash : "XXXXX", //auth api Hash you can find by url https://my.telegram.org/apps
+     stringSession : "XXXX", // fill this later with the value from session.save()
+     phoneNumber : "+XXXXX", // provide your phone number
+     password : "XXXXXXX", //password for your telegram account
+
+}
+
+
+module.exports = {
+    config
+}

@@ -1,0 +1,4 @@
+1. make sure you have nodejs install on your server or local machine min version Nodejs is 15.0.0
+2. provide all credentials to your app
+3. after running node app.js , you will need enter code from SMS or telegram message to the console,
+4. after success you will can see logs to console with data about user. If he is online or offline in real time
