@@ -1,8 +1,9 @@
 const {Api, TelegramClient} = require("telegram");
 const input = require("input")
 const creds = require("./config.js");
+const fs = require('fs')
 //Provide here phone number or username
-const usernameOrNumber = "number";
+const usernameOrNumber = "xxx";
 
 
 
@@ -29,13 +30,26 @@ const usernameOrNumber = "number";
         client.useWSS = true
         client._floodSleepThreshold = 0
         const result = await client.getEntity(usernameOrNumber);
-        // console.log(result)
+        console.log(result)
+     const p =  await  client.downloadProfilePhoto(usernameOrNumber,false)
+
+        if(p.length === 0){
+
+            console.log(usernameOrNumber, "Does not contains photo")
+        }else{
+            await   fs.writeFile("photos/"+usernameOrNumber+".png",p, (e) => {
+                if(e){
+                    console.log("ERROR", e)
+                }else{
+                    console.log("Done. file save to directory " + usernameOrNumber+"/"+usernameOrNumber+".png")
+                }
+            })
+        }
         client.addEventHandler(async (event) => {
             if (result.id.value === event.userId.value) {
                 console.log({user: result.phone, username: result.firstName}, event.status)
             }
         })
-
     })().catch((e) => {
         console.log(e.message)
     })
